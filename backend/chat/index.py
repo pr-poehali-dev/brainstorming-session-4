@@ -53,7 +53,7 @@ def handler(event: dict, context) -> dict:
     }
 
     payload = {
-        'model': 'openai/gpt-4o-mini',
+        'model': 'meta-llama/llama-3.3-70b-instruct:free',
         'messages': [system_prompt] + messages,
         'temperature': 0.7,
     }
