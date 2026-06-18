@@ -53,7 +53,7 @@ def handler(event: dict, context) -> dict:
     }
 
     payload = {
-        'model': 'google/gemini-2.0-flash-exp:free',
+        'model': 'nousresearch/hermes-3-llama-3.1-405b:free',
         'messages': [system_prompt] + messages,
         'temperature': 0.7,
     }
