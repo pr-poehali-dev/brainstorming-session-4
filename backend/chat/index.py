@@ -74,10 +74,18 @@ def handler(event: dict, context) -> dict:
             answer = result['choices'][0]['message']['content']
     except urllib.error.HTTPError as e:
         error_body = e.read().decode('utf-8')
+        print(f"OpenRouter HTTP error {e.code}: {error_body}")
         return {
             'statusCode': 502,
             'headers': {**cors_headers, 'Content-Type': 'application/json'},
             'body': json.dumps({'error': 'Ошибка нейросети', 'details': error_body}),
+        }
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        return {
+            'statusCode': 500,
+            'headers': {**cors_headers, 'Content-Type': 'application/json'},
+            'body': json.dumps({'error': str(e)}),
         }
 
     return {
