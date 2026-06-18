@@ -53,13 +53,13 @@ def handler(event: dict, context) -> dict:
     }
 
     payload = {
-        'model': 'gpt-4o-mini',
+        'model': 'openai/gpt-4o-mini',
         'messages': [system_prompt] + messages,
         'temperature': 0.7,
     }
 
     req = urllib.request.Request(
-        'https://api.openai.com/v1/chat/completions',
+        'https://openrouter.ai/api/v1/chat/completions',
         data=json.dumps(payload).encode('utf-8'),
         headers={
             'Content-Type': 'application/json',
